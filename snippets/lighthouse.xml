@@ -20,6 +20,10 @@
           fetch="https://github.com/PixelPlusUI-CAF"
           revision="sv2" />
 
+  <remote name="ppui"
+          fetch="https://github.com/PixelPlusUI-SnowCone"
+          revision="sv2" />
+
  <!-- Build repositories -->
   <project path="build/make" name="build" remote="lighthouse" >
     <copyfile src="core/root.mk" dest="Makefile" />
@@ -39,13 +43,11 @@
 
   <!-- Device -->
   <project path="device/qcom/sepolicy" name="android_device_qcom_sepolicy" groups="qcom,pdk-qcom" remote="lineage" />
-  <project path="device/qcom/sepolicy-legacy" name="android_device_qcom_sepolicy" remote="lineage" revision="lineage-18.1-legacy" />
   <project path="device/lighthouse/sepolicy" name="device_lighthouse_sepolicy" remote="lighthouse" />
-  <project path="device/qcom/sepolicy" name="device_qcom_sepolicy" remote="lighthouse" />
-  <project path="device/qcom/sepolicy_vndr" name="device_qcom_sepolicy_vndr" remote="lighthouse" />
-  <project path="device/qcom/sepolicy-legacy-um" name="device_qcom_sepolicy-legacy-um" remote="lighthouse" revision="sailboat"/>
-  <project path="device/qcom/sepolicy-legacy" name="device_qcom_sepolicy-legacy" remote="lighthouse" revision="sailboat"/>
-  <project path="device/official" name="official_devices" remote="lighthouse" revision="sailboat"/>
+  <project path="device/qcom/sepolicy_vndr" name="device_qcom_sepolicy_vndr" remote="ppui" />
+  <project path="device/qcom/sepolicy-legacy-um" name="device_qcom_sepolicy-legacy-um" remote="ppui" />
+  <project path="device/qcom/sepolicy-legacy" name="device_qcom_sepolicy-legacy" remote="ppui" />
+  <project path="device/official" name="official_devices" remote="lighthouse" />
 
   <!-- Frameworks -->
   <project path="frameworks/base" name="frameworks_base" remote="lighthouse" />
@@ -55,9 +57,7 @@
 
   <!-- External repos -->
   <project path="external/tinycompress" name="external_tinycompress" remote="lighthouse" />
-  <project path="external/selinux" name="external_selinux" remote="lighthouse" />
   <project path="external/jemalloc_new" name="external_jemalloc_new" remote="lighthouse" />
-  <project path="external/tinyxml" name="android_external_tinyxml" remote="lineage" />
   <project path="external/arm-optimized-routines" name="external_arm-optimized-routines" remote="lighthouse" />
   <project path="external/f2fs-tools" name="external_f2fs-tools" remote="lighthouse" />
   <project path="external/icing" name="external_icing" remote="lighthouse" />
@@ -105,11 +105,8 @@
   <project path="hardware/qcom-caf/msm8953/display" name="LineageOS/android_hardware_qcom_display" groups="pdk-qcom,qcom,qcom_display" remote="github" revision="lineage-18.1-caf-msm8953" />
   <project path="hardware/qcom-caf/msm8953/media" name="LineageOS/android_hardware_qcom_media" groups="qcom,pdk-qcom" remote="github" revision="lineage-18.1-caf-msm8953" />
   <project path="hardware/qcom-caf/msm8996/audio" name="LineageOS/android_hardware_qcom_audio" groups="qcom,qcom_audio,pdk-qcom" revision="lineage-19.1-caf-msm8996" remote="github" />
-  <project path="hardware/qcom-caf/msm8996-LA.UM.9.6.2.r1-04100-89xx.0/audio" name="hardware_qcom-caf_msm8996_audio" remote="pe" revision="twelve-LA.UM.9.6.2.r1-04100-89xx.0" />
   <project path="hardware/qcom-caf/msm8996/display" name="LineageOS/android_hardware_qcom_display" groups="pdk-qcom,qcom,qcom_display" revision="lineage-19.1-caf-msm8996" remote="github" />
-  <project path="hardware/qcom-caf/msm8996-LA.UM.9.6.2.r1-04100-89xx.0/display" name="hardware_qcom-caf_msm8996_display" remote="pe" revision="twelve-LA.UM.9.6.2.r1-04100-89xx.0" />
   <project path="hardware/qcom-caf/msm8996/media" name="LineageOS/android_hardware_qcom_media" groups="qcom,pdk-qcom" revision="lineage-19.1-caf-msm8996" remote="github" />
-  <project path="hardware/qcom-caf/msm8996-LA.UM.9.6.2.r1-04100-89xx.0/media" name="hardware_qcom-caf_msm8996_media" remote="pe" revision="twelve-LA.UM.9.6.2.r1-04100-89xx.0" />
   <project path="hardware/qcom-caf/msm8998/audio" name="LineageOS/android_hardware_qcom_audio" groups="qcom,qcom_audio,pdk-qcom" revision="lineage-19.1-caf-msm8998" remote="github" />
   <project path="hardware/qcom-caf/msm8998/display" name="LineageOS/android_hardware_qcom_display" groups="pdk-qcom,qcom,qcom_display" revision="lineage-19.1-caf-msm8998" remote="github" />
   <project path="hardware/qcom-caf/msm8998/media" name="LineageOS/android_hardware_qcom_media" groups="qcom,pdk-qcom" revision="lineage-19.1-caf-msm8998" remote="github" />
@@ -131,7 +128,6 @@
   <project path="hardware/qcom-caf/thermal" name="android_hardware_qcom_thermal" remote="lineage" />
   <project path="hardware/qcom-caf/wlan" name="android_hardware_qcom_wlan" groups="qcom_wlan" remote="lineage" revision="lineage-19.1-caf"/>
   <project path="hardware/libhardware" name="hardware_libhardware" remote="lighthouse" />
-  <project path="hardware/lighthouse/interfaces" name="hardware_lighthouse_interfaces" remote="lighthouse" />
  
   <!-- Packages -->
   <project path="packages/apps/Settings" name="packages_apps_Settings" remote="lighthouse" />
@@ -139,25 +135,18 @@
   <project path="packages/apps/ThemePicker" name="packages_apps_ThemePicker" remote="lighthouse"/>
   <project path="packages/modules/Connectivity" name="packages_modules_Connectivity" remote="lighthouse" />
   <project path="packages/apps/GmsCompat" name="android_packages_apps_GmsCompat" remote="proton" />
-  <project path="packages/apps/Supplies" name="packages_apps_Supplies" remote="lighthouse"/>
-  <project path="packages/apps/Updates" name="packages_apps_Updates" remote="lighthouse" revision="sailboat"/>
   <project path="packages/services/Telecomm" name="packages_services_Telecomm" remote="lighthouse" />
   <project path="packages/services/Telephony" name="packages_services_Telephony" remote="lighthouse" />
   <project path="packages/providers/MediaProvider" name="packages_providers_MediaProvider" remote="lighthouse" />
 
   <!-- System repos -->
   <project path="system/core" name="system_core" remote="lighthouse"/>
-  <project path="system/bt" name="system_bt" remote="lighthouse"/>
-  <project path="system/media" name="system_media" remote="lighthouse" />
   <project path="system/sepolicy" name="system_sepolicy" remote="lighthouse" />
   <project path="system/update_engine" name="system_update_engine" remote="lighthouse" />
-  <project path="system/libartpalette" name="system_libartpalette" remote="lighthouse" />
   <project path="system/vold" name="system_vold" remote="lighthouse" />
 
   <!-- Vendor -->
   <project path="vendor/lighthouse" name="vendor_lighthouse" remote="lighthouse" revision="sailboat"/>
-  <project path="vendor/gms" name="vendor_gapps" remote="lighthouse-gitlab" clone-depth="1" revision="sailboat" />
-  <project path="vendor/support" name="vendor_support" remote="lighthouse" revision="sailboat"/> 
   <project path="vendor/codeaurora/telephony" name="android_vendor_codeaurora_telephony" remote="lineage" />
   <project path="vendor/nxp/opensource/interfaces/nfc" name="android_vendor_nxp_interfaces_opensource_nfc" remote="lineage" />
   <project path="vendor/nxp/opensource/commonsys/external/libnfc-nci" name="android_vendor_nxp_opensource_external_libnfc-nci" remote="lineage" />
@@ -190,6 +179,5 @@
   <!-- The other guys -->
   <project path="art" name="art" remote="lighthouse" />
   <project path="libcore" name="libcore" remote="lighthouse"/>
-  <project path="bootable/recovery" name="bootable_recovery" remote="lighthouse"/>
 
 </manifest> 

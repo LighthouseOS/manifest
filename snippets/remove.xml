@@ -35,7 +35,6 @@
   <remove-project name="device/sample" />
 
   <!-- External repos -->
-  <remove-project name="platform/external/selinux" />
   <remove-project name="platform/external/zlib" />
   <remove-project name="platform/external/jemalloc_new" />
   <remove-project name="platform/external/tinycompress" />
@@ -81,17 +80,12 @@
 
   <!-- System -->
   <remove-project name="platform/system/core" />
-  <remove-project name="platform/system/bt" />
-  <remove-project name="platform/system/media" />
   <remove-project name="platform/system/sepolicy" />
   <remove-project name="platform/system/update_engine" />
-  <remove-project name="platform/system/libartpalette" />
   <remove-project name="platform/system/vold" />
-  <remove-project name="platform/system/logging" />
 
   <!-- The other guys -->  
   <remove-project name="platform/libcore" />
   <remove-project name="platform/art" />
-  <remove-project name="platform/bootable/recovery" />
 
 </manifest> 
